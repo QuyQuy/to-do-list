@@ -8,11 +8,11 @@
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Scott Bowler",
+  "author": "Quy Truong",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Learning-Fuze/react_starter.git"
+    "url": "https://github.com/QuyQuy/to-do-list.git"
   },
   "dependencies": {
     "react": "^16.5.2",
