@@ -12,6 +12,6 @@ const List = (props) => {
                     {listElements}
                 </ul>
         );
-    }
+    };
 
 export default List;

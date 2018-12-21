@@ -8,8 +8,17 @@ class AddItem extends Component {
     };
     handleSaveItem = (e) => {
         e.preventDefault();
-        console.log('newitem', this.state)
-    }
+        console.log('newitem', this.state);
+
+        this.props.add(this.state);
+        this.reset();
+    };
+    reset = () => {
+        this.setState({
+            title: '',
+            details: ''
+        })
+    };
     render() {
         const {title, details} = this.state;
         return (
@@ -28,7 +37,7 @@ class AddItem extends Component {
                 </div>
                 <div className='row'>
                     <div className=" col s6 center">
-                        <button className='btn red waves-effect'>Cancel Item</button>
+                        <button onClick={this.reset} className='btn red waves-effect'>Cancel Item</button>
                     </div>
                     <div className=" col s6 center">
                         <button className='btn green waves-effect'>Add Item</button>
