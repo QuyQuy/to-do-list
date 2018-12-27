@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './list_item';
+import NavButton from './nav_button';
 
 const List = (props) => {
         const listElements = props.toDos.map((item) => {
@@ -8,11 +9,14 @@ const List = (props) => {
         });
 
         return (
-
+            <div>
+                <h1 className='center'> to do list </h1>
+                <NavButton to='/add-item' text='Add Item'/>
                 <ul className='collection'>
                     {listElements}
                 </ul>
-        );
+            </div>
+        )
     };
 
 export default List;
