@@ -5,10 +5,8 @@ import {Route} from 'react-router-dom'
 import axios from 'axios';
 import List from './list';
 import AddItem from './add_items';
-
-
-const BASE_URL = 'http://api.reactprotypes.com/todos';
-const API_KEY = '?key=illenium_demouser';
+import ViewItem from './view_item';
+import {BASE_URL, API_KEY } from '../config/api'
 
 class App extends Component {
     state = {
@@ -45,10 +43,10 @@ class App extends Component {
         this.getListData();
     }
 
-    toggleComplete = async (id) => {
-        await axios.put(`${BASE_URL}/${id + API_KEY}`);
-        this.getListData();
-    }
+    // toggleComplete = async (id) => {
+    //     await axios.put(`${BASE_URL}/${id + API_KEY}`);
+    //     this.getListData();
+    // }
 
     render() {
         const {list} = this.state;
@@ -56,12 +54,14 @@ class App extends Component {
             <div className="container">
 
                 <Route path='/' exact render={(props) => {
-                    return <List {...props}delete={this.deleteItem} toDos={list}/>;
+                    return <List {...props} delete={this.deleteItem} toDos={list}/>;
                 }}/>
 
-                <Route path='/add-item' render{(props) => {
-                    return <AddItem {...props} add={this.addItem}/>;
+                <Route path='/add-item' render={(props) => {
+                    return <AddItem {...props} add={this.addItem} toDos={list}/>;
                 }}/>
+
+                <Route path='/item/:item_id' component={ViewItem}/>
 
             </div>
         );
@@ -70,8 +70,3 @@ class App extends Component {
 
 export default App;
 
-// axios.get(BASE_URL + API_KEY).then((resp) => {
-//     console.log('get Todos response:',resp)
-// }).catch((err) => {
-//     console.log('error getting list data:', err.message);
-// });
