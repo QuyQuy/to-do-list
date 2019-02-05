@@ -9,6 +9,7 @@ import ViewItem from './view_item';
 import {BASE_URL, API_KEY} from '../config/api';
 import NotFound from './404'
 
+
 class App extends Component {
     state = {
         list: []
@@ -20,8 +21,7 @@ class App extends Component {
 
     addItem = async (item) => {
         await axios.post(BASE_URL + API_KEY, item);
-        await this.getListData();
-
+         this.getListData();
 
     };
 
@@ -42,12 +42,12 @@ class App extends Component {
 
         await axios.delete(`${BASE_URL}/${id + API_KEY}`);
         this.getListData();
-    }
+    };
 
-    // toggleComplete = async (id) => {
-    //     await axios.put(`${BASE_URL}/${id + API_KEY}`);
-    //     this.getListData();
-    // }
+    toggleComplete = async (id) => {
+        await axios.put(`${BASE_URL}/${id + API_KEY}`);
+        this.getListData();
+    };
 
     render() {
         const {list} = this.state;
@@ -61,7 +61,7 @@ class App extends Component {
                     }}/>
 
                     <Route path='/add-item' render={(props) => {
-                        return <AddItem {...props} add={this.addItem} toDos={list}/>;
+                        return <AddItem {...props} add={this.addItem}/>;
                     }}/>
 
                     <Route path='/item/:item_id' component={ViewItem}/>

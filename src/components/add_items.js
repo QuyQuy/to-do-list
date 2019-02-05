@@ -9,7 +9,6 @@ class AddItem extends Component {
     };
     handleSaveItem = async (e) => {
         e.preventDefault();
-        console.log('newitem', this.state);
 
         await this.props.add(this.state);
         this.props.history.push('/');
