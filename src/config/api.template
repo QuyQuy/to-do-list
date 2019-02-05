@@ -1,0 +1,2 @@
+export const BASE_URL = 'Server Base URL';
+export const API_KEY = '?key=API_KEY';
